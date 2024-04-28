@@ -1,5 +1,7 @@
 name:  Echo Pipeline
 
+
+
 on:
   push:
     branches:
@@ -7,12 +9,12 @@ on:
 
 jobs:
   echo_secrets_and_vars:
-    runs-on: ubuntu-latest
     env:
-      FYP_NAME: ${{ secrets.FYP_NAME }}
-      MY_VARIABLE: ${{ vars.MY_VARIABLE }}
+        FYP_NAME: ${{ secrets.FYP_NAME }}
+        MY_VARIABLE: ${{ vars.MY_VARIABLE }}
+    runs-on: ubuntu-latest
     steps:
       - name: Echo stuff
         run: |
             echo " FYP_NAME: $FYP_NAME" 
-            echo " MY_VARIABLE: $MY_VARIABLE"
+            echo " MY_VARIABLE: ${{ vars.MY_VARIABLE }}"
