@@ -8,16 +8,17 @@ on:
 jobs:
   echo_url:
     runs-on: ubuntu-latest
+    environment: DEVELOPMENT
     steps:
       - name: Echo URL based on environment
         run: |
-          if [[ "${{ env.ENVIRONMENT }}" == "demo" ]]; then
+          if [[ "${{ env.ENVIRONMENT }}" == "DEVELOPMENT" ]]; then
             echo "Production URL: ${{ secrets.PRODUCTION_URL }}"
-            echo "inside demo"
+            echo "inside DEVELOPMENT"
           else
-            echo "Development URL: ${{ secrets.DEVELOPMENT_URL }}"
-            echo "not inside demo"
+            echo "Development URL: ${{ vars.DEVELOPMENT_URL }}"
+            echo "not inside DEVELOPMENT"
           fi
         env:
           PRODUCTION_URL: ${{ secrets.PRODUCTION_URL }}
-          DEVELOPMENT_URL: ${{ secrets.DEVELOPMENT_URL }}
+          DEVELOPMENT_URL: ${{ vars.DEVELOPMENT_URL }}
