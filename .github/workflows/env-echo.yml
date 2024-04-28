@@ -8,7 +8,11 @@ on:
 jobs:
   echo_secrets_and_vars:
     runs-on: ubuntu-latest
+    env:
+      FYP_NAME: ${{ secrets.FYP_NAME }}
+      MY_VARIABLE: ${{ vars.MY_VARIABLE }}
     steps:
       - name: Echo stuff
-        run: 
-            echo " The URL for the ${{ secrets.FYP_NAME }} event is ${{ secrets.MY_VARIABLE}}."
+        run: |
+            echo " FYP_NAME: $FYP_NAME" 
+            echo " MY_VARIABLE: $MY_VARIABLE"
