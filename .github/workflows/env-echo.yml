@@ -17,6 +17,8 @@ jobs:
             echo "inside DEVELOPMENT"
           else
             echo "Development URL: ${{ vars.DEVELOPMENT_URL }}"
+            echo "Production URL: $PRODUCTION_URL"
+            echo "Production URL2: ${{ secrets.PRODUCTION_URL }}"
             echo "not inside DEVELOPMENT"
           fi
         env:
