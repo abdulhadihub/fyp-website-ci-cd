@@ -1,0 +1,22 @@
+name: URL Echo Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  echo_url:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo URL based on environment
+        run: |
+          if [ "${{ env.ENVIRONMENT }}" == "demo" ]; then
+            echo "My secret: $PRODUCTION_URL"
+            echo "My variable URL: $DEVELOPMENT_URL"
+          else
+            echo "Development URL: $DEVELOPMENT_URL"
+          fi
+        env:
+          PRODUCTION_URL: ${{ secrets.FYP_NAME }}
+          DEVELOPMENT_URL: ${{ vars.MY_VARIABLE }}
