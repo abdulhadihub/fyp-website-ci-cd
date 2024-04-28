@@ -1,4 +1,4 @@
-name: Echo Pipeline
+name: Echo Pipeline  # Removed unnecessary ": URL"
 
 on:
   push:
@@ -6,12 +6,18 @@ on:
       - main
 
 jobs:
-  echo_secrets_and_vars:
+  echo_url:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo stuff
+      - name: Echo URL based on environment
         run: |
-            echo "FYP_NAME: $FYP_NAME"
-            echo "MY_VARIABLE: ${{ env.MY_VARIABLE }}"
+          if [[ "${{ env.ENVIRONMENT }}" == "demo" ]]; then
+            echo "Production URL: ${{ secrets.PRODUCTION_URL }}"
+            echo "inside demo"
+          else
+            echo "Development URL: ${{ secrets.DEVELOPMENT_URL }}"
+            echo "not inside demo"
+          fi
         env:
-            FYP_NAME: ${{ secrets.FYP_NAME }}
+          PRODUCTION_URL: ${{ secrets.PRODUCTION_URL }}
+          DEVELOPMENT_URL: ${{ secrets.DEVELOPMENT_URL }}
