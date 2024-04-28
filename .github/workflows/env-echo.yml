@@ -1,4 +1,4 @@
-name: URL Echo Pipeline
+name:  Echo Pipeline
 
 on:
   push:
@@ -6,17 +6,9 @@ on:
       - main
 
 jobs:
-  echo_url:
+  echo_secrets_and_vars:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo URL based on environment
-        run: |
-          if [ "${{ env.ENVIRONMENT }}" == "demo" ]; then
-            echo "My secret: $PRODUCTION_URL"
-            echo "My variable URL: $DEVELOPMENT_URL"
-          else
-            echo "Development URL: $DEVELOPMENT_URL"
-          fi
-        env:
-          PRODUCTION_URL: ${{ secrets.FYP_NAME }}
-          DEVELOPMENT_URL: ${{ vars.MY_VARIABLE }}
+      - name: Echo stuff
+        run: 
+            echo " The URL for the ${{ secrets.FYP_NAME }} event is ${{ vars.MY_VARIABLE}}."
