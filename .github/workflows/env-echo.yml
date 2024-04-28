@@ -8,7 +8,7 @@ on:
 jobs:
   echo_url:
     runs-on: ubuntu-latest
-    # environment: DEVELOPMENT
+    environment: DEVELOPMENT
     steps:
       - name: Echo URL based on environment
         run: |
