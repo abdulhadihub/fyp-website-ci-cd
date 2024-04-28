@@ -1,5 +1,6 @@
 {
   "name": "website",
+  "homepage": "https://abdulhadihub.github.io/fyp-website-ci-cd/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,11 +9,14 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "start": "cd ../flask_server && python -u restapi.py"
+    "start": "cd ../flask_server && python -u restapi.py",
+    "deploy": "vite build && gh-pages -d dist"
   },
   "dependencies": {
     "antd": "^5.15.4",
+    "axios": "^1.6.8",
     "chart.js": "^4.4.2",
+    "papaparse": "^5.4.1",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
@@ -28,6 +32,7 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
+    "gh-pages": "^6.1.1",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
     "vite": "^5.2.0"
