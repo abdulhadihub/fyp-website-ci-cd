@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: Echo stuff
         run: 
-            echo " The URL for the ${{ secrets.FYP_NAME }} event is ${{ vars.MY_VARIABLE}}."
+            echo " The URL for the ${{ secrets.FYP_NAME }} event is ${{ secrets.MY_VARIABLE}}."
